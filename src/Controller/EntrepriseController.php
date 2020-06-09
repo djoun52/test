@@ -2,18 +2,38 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
 
+use App\Entity\Entreprise;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+
+
+/**
+ * @Route("/entreprise")
+ */
 class EntrepriseController extends AbstractController
 {
     /**
-     * @Route("/entreprise", name="entreprise")
+    * @Route("/", name="entreprise_index")
      */
+
     public function index()
     {
-        return $this->render('entreprise/index.html.twig', [
-            'controller_name' => 'EntrepriseController',
+        $entreprise = $this->getDoctrine()
+        ->getRepository(Entreprise::class)
+        ->getAll();
+        return $this->render('Entreprise/index.html.twig', [
+            'entreprise' => $entreprise,
         ]);
     }
+
+    /**
+     * @Route("/(id)", name="entreprise_show", methods="GET")
+     */
+    public function schow(Entreprise $entreprise): Response {
+        return $this->render('entreprise/show.html.twig',['entreprise'=>$entreprise]);
+    }
 }
+

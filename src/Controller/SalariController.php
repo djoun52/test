@@ -2,18 +2,34 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Salari;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+
+
+/**
+ * @Route("/salari")
+ */
 class SalariController extends AbstractController
 {
     /**
-     * @Route("/salari", name="salari")
+     * @Route("/", name="salari_index")
      */
     public function index()
     {
-        return $this->render('salari/index.html.twig', [
-            'controller_name' => 'SalariController',
+        $salarie = $this->getDoctrine()
+                ->getRepository(Salari::class)->getAll();
+        return $this->render('Salari/index.html.twig', [
+            'salari' => $salarie,
         ]);
+    }
+    
+/**
+ * @Route("/(id)", name="salari_show", methods="GET")
+ */
+    public function schow(Salari $salarie): Response {
+        return $this->render('salari/show.html.twig',['salarie'=>$salarie]);
     }
 }

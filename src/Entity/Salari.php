@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\SalariRepository;
+use App\Entity\Entreprise;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\SalariRepository;
 
 /**
  * @ORM\Entity(repositoryClass=SalariRepository::class)
+ * @
  */
 class Salari
 {

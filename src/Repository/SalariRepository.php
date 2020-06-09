@@ -19,32 +19,16 @@ class SalariRepository extends ServiceEntityRepository
         parent::__construct($registry, Salari::class);
     }
 
-    // /**
-    //  * @return Salari[] Returns an array of Salari objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function getAll()
     {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $entityManager = $this->getEntityManager(); 
+        $querry = $entityManager->createQuery(
+                'SELECT s 
+                    FROM app\Entity\Salari s
+                    ORDER BY s.dateEmbauche DESC'
+                );
+        return $querry->execute();
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Salari
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+  
 }
