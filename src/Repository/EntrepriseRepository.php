@@ -25,7 +25,7 @@ class EntrepriseRepository extends ServiceEntityRepository
         $querry = $entityManager->createQuery(
                 'SELECT e
                     FROM app\Entity\Entreprise e
-                    ORDER BY s.dateNaissance DESC'
+                    ORDER BY e.siret DESC'
                 );
         return $querry->execute();
     }

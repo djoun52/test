@@ -4,6 +4,7 @@ namespace App\Controller;
 
 
 use App\Entity\Entreprise;
+use App\Entity\Salarie;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,7 +25,7 @@ class EntrepriseController extends AbstractController
         $entreprise = $this->getDoctrine()
         ->getRepository(Entreprise::class)
         ->getAll();
-        return $this->render('Entreprise/index.html.twig', [
+        return $this->render('entreprise/index.html.twig', [
             'entreprise' => $entreprise,
         ]);
     }

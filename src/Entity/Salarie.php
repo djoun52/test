@@ -4,13 +4,13 @@ namespace App\Entity;
 
 use App\Entity\Entreprise;
 use Doctrine\ORM\Mapping as ORM;
-use App\Repository\SalariRepository;
+use App\Repository\SalarieRepository;
 
 /**
- * @ORM\Entity(repositoryClass=SalariRepository::class)
+ * @ORM\Entity(repositoryClass=SalarieRepository::class)
  * @
  */
-class Salari
+class Salarie
 {
     /**
      * @ORM\Id()

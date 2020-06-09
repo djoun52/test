@@ -45,7 +45,7 @@ class Entreprise
     private $ville;
 
     /**
-     * @ORM\OneToMany(targetEntity=salari::class, mappedBy="entreprise", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Salarie::class, mappedBy="entreprise", orphanRemoval=true)
      */
     private $salaries;
 
@@ -120,14 +120,14 @@ class Entreprise
     }
 
     /**
-     * @return Collection|salari[]
+     * @return Collection|Salarie[]
      */
     public function getSalaries(): Collection
     {
         return $this->salaries;
     }
 
-    public function addSalary(salari $salary): self
+    public function addSalary(Salarie $salary): self
     {
         if (!$this->salaries->contains($salary)) {
             $this->salaries[] = $salary;
@@ -137,7 +137,7 @@ class Entreprise
         return $this;
     }
 
-    public function removeSalary(salari $salary): self
+    public function removeSalary(Salarie $salary): self
     {
         if ($this->salaries->contains($salary)) {
             $this->salaries->removeElement($salary);
