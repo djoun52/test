@@ -33,7 +33,7 @@ class EntrepriseType extends AbstractType
             ])
                    
             ->add('Valider', SubmitType::class, [
-                'attr' => ['class' => 'uk-button uk-button-primary uk-margin-top']
+                'attr' => ['class' => 'btn btn-primary uk-margin-top']
             ]);
         ;
     }

@@ -71,10 +71,14 @@ class SalarieController extends AbstractController
     }
 
     /**
-    * @Route("/remove", name="salarie_remove")
+    * @Route("/{id}/remove", name="salarie_remove", methods="GET")
     */
     public function remove(Salarie $salarie){
-        
+        $id = $salarie->getId();
+        $salarie = $this->getDoctrine()
+                ->getRepository(Salarie::class)
+                ->deleteOneById($id);
+        return $this->redirectToRoute('salarie_index');
     }    
     
     /**

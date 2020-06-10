@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ajouter des salariés{% endblock %}
+{% block title %}Hello HomeController!{% endblock %}
 
  {% block nav %}
        	<nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
@@ -10,7 +10,7 @@
 					<a class="nav-link" href="{{ path('entreprise_index') }}">
 						liste des entreprises</a>
 				</li>
-				<li class="nav-item active">
+				<li class="nav-item ">
 					<a class="nav-link" href="{{ path('salarie_index') }}">
 						liste des salariés</a>
 				</li>
@@ -21,13 +21,5 @@
 
 {% block body %}
 
-
-    {% if editMode %}
-        <h1>Modification d'un salarié</h1>
-    {% else %}
-        <h1>Ajout d'un salarié</h1>
-    {% endif %}
-    
-    {{ form(formSalarie) }}
-
+    <h1>Bienvenue</h1>
 {% endblock %}

@@ -33,5 +33,17 @@ class EntrepriseRepository extends ServiceEntityRepository
                 );
         return $querry->execute();
     }
+    /**
+     * supprimer une entreprise
+     */
+    public function deleteOneById($id){
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+            "DELETE 
+                FROM App\Entity\Entreprise e
+                WHERE e.id = $id"
+        );
+        return $query->execute();
+    }
    
 }

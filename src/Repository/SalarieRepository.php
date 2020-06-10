@@ -18,7 +18,7 @@ class SalarieRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Salarie::class);
     }
- /**
+    /**
      * Afficher la liste des salariés
      */
     public function getAll() {
@@ -31,4 +31,18 @@ class SalarieRepository extends ServiceEntityRepository
         );
         return $query->execute();
     }
+
+    /**
+     * supprimer un salarié
+     */
+    public function deleteOneById($id){
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+            "DELETE 
+                FROM App\Entity\Salarie s 
+                WHERE s.id = $id"
+        );
+        return $query->execute();
+    }
+    
 }

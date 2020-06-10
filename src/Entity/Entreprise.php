@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\EntrepriseRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -41,6 +42,11 @@ class Entreprise
 
     /**
      * @ORM\Column(type="string", length=30, nullable=true)
+     * @Assert\Regex(
+     * pattern="/\d/",
+     * match=false,
+     * message="Your ville cannot contain a number"
+     * )
      */
     private $ville;
 

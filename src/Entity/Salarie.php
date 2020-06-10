@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Entity;
-
+use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\SalarieRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -19,11 +19,22 @@ class Salarie
 
     /**
      * @ORM\Column(type="string", length=50)
+     *
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Your name cannot contain a number"
+     * )
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Assert\Regex(
+     * pattern="/\d/",
+     * match=false,
+     * message="Your prenom cannot contain a number"
+     * )
      */
     private $prenom;
 
@@ -44,6 +55,11 @@ class Salarie
 
     /**
      * @ORM\Column(type="string", length=30, nullable=true)
+     * @Assert\Regex(
+     * pattern="/\d/",
+     * match=false,
+     * message="Your ville cannot contain a number"
+     * )
      */
     private $ville;
 

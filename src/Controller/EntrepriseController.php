@@ -73,6 +73,17 @@ class EntrepriseController extends AbstractController
        ]);
    }
 
+       /**
+    * @Route("/{id}/remove", name="entreprise_remove", methods="GET")
+    */
+    public function remove(Entreprise $entreprise){
+        $id = $entreprise->getId();
+        $entreprise = $this->getDoctrine()
+                ->getRepository(Entreprise::class)
+                ->deleteOneById($id);
+        return $this->redirectToRoute('entreprise_index');
+    }   
+
 
 
 

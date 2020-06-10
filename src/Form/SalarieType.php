@@ -18,10 +18,10 @@ class SalarieType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class, [
-                'attr' => ['class' => 'uk-input']
+                'attr' => ['class' => 'form-control']
             ])
             ->add('prenom', TextType::class, [
-                'attr' => ['class' => 'uk-input']
+                'attr' => ['class' => 'form-control']
             ])
             ->add('dateNaissance', DateType::class, [
                 'years' => range(date('Y'),date('Y')-70),
@@ -29,26 +29,27 @@ class SalarieType extends AbstractType
                 'format' => 'ddMMyyyy'
             ])
             ->add('adresse', TextType::class, [
-                'attr' => ['class' => 'uk-input']
+                'attr' => ['class' => 'form-control']
             ])
             ->add('cp', TextType::class, [
-                'attr' => ['class' => 'uk-input']
+                'attr' => ['class' => 'form-control']
             ])
             ->add('ville', TextType::class, [
-                'attr' => ['class' => 'uk-input']
+                'attr' => ['class' => 'form-control']
             ])
             ->add('dateEmbauche', DateType::class, [
                 'years' => range(date('Y'),date('Y')-70),
                 'label' => 'Date d\'embauche',
-                'format' => 'ddMMyyyy'
+                'format' => 'ddMMyyyy',
+               
             ])
             ->add('entreprise', EntityType::class, [
                 'class' => Entreprise::class,
                 'choice_label' => 'raisonSociale',
-                'attr' => ['class' => 'uk-select']
+                'attr' => ['class' => 'custom-select']
             ])
             ->add('Valider', SubmitType::class, [
-                'attr' => ['class' => 'uk-button uk-button-primary uk-margin-top']
+                'attr' => ['class' => 'btn btn-primary uk-margin-top']
             ]);
     }
 
