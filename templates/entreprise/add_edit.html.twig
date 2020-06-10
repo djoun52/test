@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des entreprise{% endblock %}
+
+{% block body %}
+
+    <a href="{{ path('entreprise_index') }}">Retour à la liste des entreprises</a>
+
+    {% if editMode %}
+        <h1>Modification d'une entreprise</h1>
+    {% else %}
+        <h1>Ajout d'un entreprise</h1>
+    {% endif %}
+    
+    {{ form(formEntreprise) }}
+
+{% endblock %}

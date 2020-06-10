@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Salarié{% endblock %}
+
+{% block body %}
+
+    <a href="{{ path('entreprise_index') }}">Retour à la liste des entreprises</a>
+
+    <h1>{{ entreprise }}</h1>
+    <p>
+        numéro de siret : {{ entreprise.siret }} <br>
+        Adresse : {{ entreprise.AdresseComplete}}
+    </p>
+
+
+
+    <p>liste des employé de l'entreprise</p>
+
+    <table class="uk-table uk-table-striped">
+        <thead>
+            <tr>
+                <th>SALARIE</th>
+                <th>ADRESSE</th>
+                <th>CP</th>
+                <th>VILLE</th>
+                <th>DATE EMBAUCHE</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for salaries in entreprise.salaries %}
+            <tr>
+                <td> <a href="{{ path('salarie_show', {id: salaries.id}) }}">{{ salaries.nom }}</a></td> 
+                <td>{{ salaries.adresse }}</td>
+                <td>{{ salaries.cp }}</td>
+                <td>{{ salaries.ville }}</td>
+                <td>{{ salaries.dateEmbauche | date('d/m/Y') }}</td>
+
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

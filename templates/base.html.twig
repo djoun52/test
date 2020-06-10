@@ -2,15 +2,23 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Exo Salariés / Entreprises{% endblock %}</title>
+        {% block stylesheets %}
+            <!-- UIkit CSS -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.3/dist/css/uikit.min.css" />
+            <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@300&display=swap" rel="stylesheet">
+            {# asset() fait référence au dossier 'public' du projet #}
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        {% endblock %}
     </head>
     <body>
-        {% block body %}
-         {% block contenu  %}
-        
+        <main class="uk-container uk-container-large">
+            {% block body %}{% endblock %}
+        </main>
+        {% block javascripts %}
+            <!-- UIkit JS -->
+            <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.3/dist/js/uikit.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.3/dist/js/uikit-icons.min.js"></script>
         {% endblock %}
-        {% endblock %}
-        {% block javascripts %}{% endblock %}
     </body>
 </html>

@@ -2,13 +2,11 @@
 
 namespace App\Entity;
 
-use App\Entity\Entreprise;
-use Doctrine\ORM\Mapping as ORM;
 use App\Repository\SalarieRepository;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=SalarieRepository::class)
- * @
  */
 class Salarie
 {
@@ -25,7 +23,7 @@ class Salarie
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=20)
      */
     private $prenom;
 
@@ -37,7 +35,7 @@ class Salarie
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
      */
-    private $adress;
+    private $adresse;
 
     /**
      * @ORM\Column(type="string", length=10, nullable=true)
@@ -59,7 +57,6 @@ class Salarie
      * @ORM\JoinColumn(nullable=false)
      */
     private $entreprise;
-
 
     public function getId(): ?int
     {
@@ -102,14 +99,14 @@ class Salarie
         return $this;
     }
 
-    public function getAdress(): ?string
+    public function getAdresse(): ?string
     {
-        return $this->adress;
+        return $this->adresse;
     }
 
-    public function setAdress(?string $adress): self
+    public function setAdresse(?string $adresse): self
     {
-        $this->adress = $adress;
+        $this->adresse = $adresse;
 
         return $this;
     }
@@ -138,6 +135,10 @@ class Salarie
         return $this;
     }
 
+    public function getAdresseComplete() {
+        return $this->adresse." ".$this->cp." ".$this->ville;
+    }
+
     public function getDateEmbauche(): ?\DateTimeInterface
     {
         return $this->dateEmbauche;
@@ -162,4 +163,20 @@ class Salarie
         return $this;
     }
 
+    public function __toString() 
+    {
+        return $this->nom." ".$this->prenom;
+    }
+
+    public function getIntervalYears($date) {
+        $now = new \DateTime();
+        $interval = $date->diff($now);
+        return $interval->format('%Y');
+    }
+
+    public function getIntervalYearsMonthsDays($date) {
+        $now = new \DateTime();
+        $interval = $date->diff($now);
+        return $interval->format('%y années %m mois %d jours');
+    }
 }

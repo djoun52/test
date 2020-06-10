@@ -19,6 +19,10 @@ class EntrepriseRepository extends ServiceEntityRepository
         parent::__construct($registry, Entreprise::class);
     }
 
+
+     /**
+     * Afficher la liste des entreprises
+     */
     public function getAll()
     {
         $entityManager = $this->getEntityManager(); 

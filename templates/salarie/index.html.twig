@@ -1,45 +1,40 @@
-
-
-
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SalariController!{% endblock %}
+{% block title %}Liste des salariés{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-  
+    <p><a href="{{ path('salarie_add') }}">Ajouter un salarié</a></p>
+    <a href="{{ path('entreprise_index') }}"> liste des entreprises</a>
 
-   
-{% endblock %}
+    <h1>Liste des salariés</h1>
 
-{% block contenu %}
-
-<table>
-    <thead>
-        <tr>
-            <th>SALARIE  </th>
-            <th>ADRESSE  </th>
-            <th>CP  </th>
-            <th>VILLE  </th>
-            <th>DATE EMBAUCHE  </th>
-            <th>ENTRERISE  </th>
-        </tr>
-    </thead>
-    <tbody>
-        (% for salarie in salarie %)
-        <tr>
-            <td> <a href=" ({ path{'salarie.show', {'id':salarie.id} })" > </td>
-            <td>({ salarie.adressee})</td>
-            <td>({ salarie.cp})</td>
-            <td>({ salarie.ville})</td>
-            <td>({ salarie.dateEmbauche | date('d/m/y') })</td>
-            <td>({ salarie.entreprise.raisonSocial})</td>
-        </tr>
-    </tbody>
-</table>
+    <table class="uk-table uk-table-striped">
+        <thead>
+            <tr>
+                <th>SALARIE</th>
+                <th>ADRESSE</th>
+                <th>CP</th>
+                <th>VILLE</th>
+                <th>DATE EMBAUCHE</th>
+                <th>ENTREPRISE</th>
+                <th>MODIFIER</th>
+                <th>SUPPRIMER</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for salarie in salarie %}
+            <tr>
+                <td><a href="{{ path('salarie_show', {id: salarie.id}) }}">{{ salarie }}</a></td>
+                <td>{{ salarie.adresse }}</td>
+                <td>{{ salarie.cp }}</td>
+                <td>{{ salarie.ville }}</td>
+                <td>{{ salarie.dateEmbauche | date('d/m/Y') }}</td>
+                <td>{{ salarie.entreprise }}</td>
+                <td><a href="{{ path('salarie_edit', {id: salarie.id}) }}">Modifier</a></td>
+                <td>{# <a href="{{ path('salarie_remove', {id: salarie.id}) }}">Supprimer</a> #}</td> 
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

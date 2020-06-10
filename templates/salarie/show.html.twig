@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Salarié{% endblock %}
+
+{% block body %}
+
+    <p><a href="{{ path('salarie_index') }}">Retour à la liste des salariés</a></p>
+
+    <h1>{{ salarie }}</h1>
+    <p>
+        Né(e) le : {{ salarie.dateNaissance | date('d/m/Y') ~ 
+            ' (' ~ salarie.intervalYears(salarie.dateNaissance) ~ ' ans)' }} <br>
+        {{ ' travaille à ' ~ salarie.entreprise 
+            ~ ' depuis le ' ~ salarie.dateEmbauche | date('d/m/Y') ~ ' (' ~ salarie.intervalYearsMonthsDays(salarie.dateEmbauche) ~ ')' }} <br>
+        Adresse : {{ salarie.adresseComplete }}
+    </p>
+{% endblock %}

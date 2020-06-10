@@ -18,17 +18,17 @@ class SalarieRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Salarie::class);
     }
-
-    public function getAll()
-    {
-        $entityManager = $this->getEntityManager(); 
-        $querry = $entityManager->createQuery(
-                'SELECT s 
-                    FROM app\Entity\Salarie s
-                    ORDER BY s.dateEmbauche DESC'
-                );
-        return $querry->execute();
+ /**
+     * Afficher la liste des salariés
+     */
+    public function getAll() {
+        $entityManager = $this->getEntityManager();
+        // requête DQL : liste des salariés triés par date d'embauche décroissante
+        $query = $entityManager->createQuery(
+            "SELECT s
+                FROM App\Entity\Salarie s
+                ORDER BY s.dateEmbauche DESC"
+        );
+        return $query->execute();
     }
-
-  
 }
